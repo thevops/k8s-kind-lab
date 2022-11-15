@@ -55,7 +55,7 @@ spec:
   project: default
   source:
     path: manifests/istio/istio-istiod
-    repoURL: https://github.com/thevops/k8s-kind-lab.git
+    repoURL: https://raw.githubusercontent.com/istio/istio/1.15.3/samples/addons/kiali.yaml
     targetRevision: master
   syncPolicy:
     syncOptions:
@@ -64,7 +64,7 @@ spec:
     #   prune: true
     #   selfHeal: true
 ---
-using Helm - not working
+# using addon
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -78,31 +78,10 @@ spec:
     namespace: istio-system
   project: default
   source:
-    path: manifests/istio/kiali
+    path: manifests/istio/kiali-addon
     repoURL: https://github.com/thevops/k8s-kind-lab.git
     targetRevision: master
-#   syncPolicy:
-#     automated:
-#       prune: true
-#       selfHeal: true
-# ---
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: kiali
-#   namespace: argocd
-#   finalizers:
-#   - resources-finalizer.argocd.argoproj.io
-# spec:
-#   destination:
-#     server: https://kubernetes.default.svc
-#     namespace: istio-system
-#   project: default
-#   source:
-#     path: deploy/static/provider/kind/
-#     repoURL: https://github.com/kubernetes/ingress-nginx
-#     targetRevision: main
-#   syncPolicy: {}
-#     # automated:
-#     #   prune: true
-#     #   selfHeal: true
+  syncPolicy: {}
+    # automated:
+    #   prune: true
+    #   selfHeal: true
