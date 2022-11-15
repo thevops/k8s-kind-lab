@@ -1,0 +1,14 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: echo-app
+  annotations:
+    argocd.argoproj.io/sync-options: Replace=true
+  labels:
+    app: echo-app
+spec:
+  containers:
+  - name: echo-app
+    image: hashicorp/http-echo:0.2.3
+    args:
+    - "-text={{ .Values.text }}"
