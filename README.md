@@ -34,6 +34,11 @@ stringData:
 Change repository format from `https://github.com` to `git@github.com:`
 
 
+## Endpoints
+
+- `http://argocd.127.0.0.1.nip.io/` - ArgoCD (accessible after deploying ingress)
+- `http://dashboard.127.0.0.1.nip.io/` - Kubernetes dashboard
+
 ## Screenshots
 
 Todo

@@ -1,0 +1,5 @@
+cr:
+  create: true
+  namespace: istio-system
+auth:
+  strategy: anonymous
