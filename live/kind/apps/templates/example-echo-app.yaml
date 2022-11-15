@@ -16,7 +16,7 @@ spec:
       values: |
         text: Hello Netgurals
     repoURL: https://github.com/thevops/k8s-kind-lab.git
-    targetRevision: main
+    targetRevision: master
   syncPolicy:
     # automated:
     #   prune: true
