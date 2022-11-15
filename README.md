@@ -1,8 +1,6 @@
-# kind-argo-demo
+# Kubernetes Lab
 
-![screenshot](./docs/screenshot.png)
-
-## First setup
+## Setup
 
 Create cluster
 ```bash
@@ -45,7 +43,7 @@ kubectl -n argocd port-forward svc/argocd-server 8080:443
 
 
 
-Configure access to Github via SSH key
+Configure access to Github via SSH key (if repository is private)
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -59,11 +57,7 @@ stringData:
   url: git@github.com:thevops/k8s-kind-lab.git
   sshPrivateKey: |
     -----BEGIN OPENSSH PRIVATE KEY-----
-    b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
-    QyNTUxOQAAACBTPRkg0i3nWbyZb4uxLskScmwoSE/Rb5W0gmqNAQbpWAAAAJjsZwgv7GcI
-    LwAAAAtzc2gtZWQyNTUxOQAAACBTPRkg0i3nWbyZb4uxLskScmwoSE/Rb5W0gmqNAQbpWA
-    AAAEAnQiIZTq/tUxToSskfbuIXv5soOnQfz/GtOIh4sH5Wd1M9GSDSLedZvJlvi7EuyRJy
-    bChIT9FvlbSCao0BBulYAAAAE2FyZ29jZEBraW5kLmNsdXN0ZXIBAg==
+    ...
     -----END OPENSSH PRIVATE KEY-----
 ```
 
@@ -78,3 +72,8 @@ kubectl delete secret -l owner=helm,name=argocd -n argocd
 # uncomment and push rest of apps one by one
 # ...
 ```
+
+
+## Screenshots
+
+Todo
