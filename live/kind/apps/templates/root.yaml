@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: live/kind/apps/
-    repoURL: git@github.com:thevops/k8s-kind-lab.git
+    repoURL: https://github.com/thevops/k8s-kind-lab.git
     targetRevision: main
   syncPolicy:
     automated:

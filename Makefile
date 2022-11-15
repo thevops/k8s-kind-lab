@@ -36,9 +36,8 @@ endef
 _destroy-cluster: ## Destroy Kind cluster
 	$(call print_info,Clean up...)
 	cd live/kind/infrastructure/
-	terraform apply -destroy -auto-approve || true
-	rm -rf main-config .terraform/ .terraform.lock.hcl terraform.tfstate*
-	cd ../../../
+	[ -f .terraform.tfstate ] && terraform apply -destroy -auto-approve
+	rm -rvf main-config .terraform/ .terraform.lock.hcl terraform.tfstate*
 
 .PHONY: _init-cluster
 _init-cluster:
@@ -47,7 +46,6 @@ _init-cluster:
 	terraform init
 	terraform apply -auto-approve
 	sleep 5
-	cd ../../../
 
 .PHONY: _install-argocd
 _install-argocd:
