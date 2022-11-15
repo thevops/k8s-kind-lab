@@ -55,7 +55,7 @@ spec:
   project: default
   source:
     path: manifests/istio/istio-istiod
-    repoURL: https://raw.githubusercontent.com/istio/istio/1.15.3/samples/addons/kiali.yaml
+    repoURL: https://github.com/thevops/k8s-kind-lab.git
     targetRevision: master
   syncPolicy:
     syncOptions:
