@@ -8,3 +8,4 @@ spec:
     strategy: "anonymous"
   deployment:
     accessible_namespaces: ["**"] # two * means all namespaces
+    ingress: false
