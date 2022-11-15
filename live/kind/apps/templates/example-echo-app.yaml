@@ -11,7 +11,7 @@ spec:
     namespace: example-echo-app
   project: default
   source:
-    path: charts/example-echo-app
+    path: manifests/example-echo-app
     helm:
       values: |
         text: Hello Netgurals

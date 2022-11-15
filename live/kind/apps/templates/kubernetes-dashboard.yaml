@@ -11,7 +11,7 @@ spec:
     namespace: kubernetes-dashboard
   project: default
   source:
-    path: charts/kubernetes-dashboard
+    path: manifests/kubernetes-dashboard
     repoURL: git@github.com:thevops/k8s-kind-lab.git
     targetRevision: main
 #   syncPolicy:

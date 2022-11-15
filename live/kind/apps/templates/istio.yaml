@@ -10,7 +10,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: charts/istio/crds
+    path: manifests/istio/crds
     repoURL: git@github.com:thevops/k8s-kind-lab.git
     targetRevision: main
 #   syncPolicy:
@@ -31,7 +31,7 @@ spec:
     namespace: istio-system
   project: default
   source:
-    path: charts/istio/istio-base
+    path: manifests/istio/istio-base
     repoURL: git@github.com:thevops/k8s-kind-lab.git
     targetRevision: main
   syncPolicy:
@@ -54,7 +54,7 @@ spec:
     namespace: istio-system
   project: default
   source:
-    path: charts/istio/istio-istiod
+    path: manifests/istio/istio-istiod
     repoURL: git@github.com:thevops/k8s-kind-lab.git
     targetRevision: main
   syncPolicy:

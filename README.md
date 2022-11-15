@@ -4,51 +4,20 @@
 
 Create cluster
 ```bash
-cd live/kind/infrastructure/
-# optional clean up
-rm -rf main-config .terraform/ .terraform.lock.hcl terraform.tfstate*
-# ---
-terraform init
-terraform apply
+make init-from-zero
 ```
 
-Install Argo CD (manual step)
-```bash
-cd ../../../ # back to root dir
-helm repo add argo-cd https://argoproj.github.io/argo-helm
-helm dep update charts/argo-cd/ # we need Chart.lock file for further installation
-
-# install ArgoCD
-kubectl create namespace argocd
-helm install argocd charts/argo/argo-cd/ --namespace argocd --wait --debug
-
-# access ArgoCD UI
-kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
-kubectl -n argocd port-forward svc/argocd-server 8080:443
-```
-
-> Below steps will install all applications
+Further deploy of rest applications is done by ArgoCD. They are configured to be installed after manual trigger in ArgoCD. Open ArgoCD UI with `make argocd-dashboard` and install them.
 
 
-## First applications apply order:
+ArgoCD needs access to repository from which it pulls configuration. If this repository is private, then you have to add Kubernetes secret with SSH Key.
 
-1. root.yaml
-2. argocd.yaml
-3. argocd-crds.yaml
-4. bitnami-sealed-secrets.yaml
-5. ingress-nginx.yaml
-6. example-echo-app.yaml
-
-> Make sure that applications not applied should be commented out (whole code in their files). Uncomment and push them one by one.
-
-
-
-Configure access to Github via SSH key (if repository is private)
+Example:
 ```yaml
 apiVersion: v1
 kind: Secret
 metadata:
-  name: repo-kind-argo-demo
+  name: repo-k8s-kind-lab
   namespace: argocd
   labels:
     argocd.argoproj.io/secret-type: repository
@@ -59,18 +28,6 @@ stringData:
     -----BEGIN OPENSSH PRIVATE KEY-----
     ...
     -----END OPENSSH PRIVATE KEY-----
-```
-
-
-```bash
-# install root app
-kubectl apply --namespace argocd -f live/kind/apps/templates/root.yaml
-
-# delete Helm management for ArgoCD
-kubectl delete secret -l owner=helm,name=argocd -n argocd
-
-# uncomment and push rest of apps one by one
-# ...
 ```
 
 

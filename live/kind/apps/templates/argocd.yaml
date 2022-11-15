@@ -10,7 +10,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: charts/argo/argocd-crds
+    path: manifests/argo/argocd-crds
     repoURL: git@github.com:thevops/k8s-kind-lab.git
     targetRevision: main
   syncPolicy:
@@ -31,7 +31,7 @@ spec:
     namespace: argocd
   project: default
   source:
-    path: charts/argo/argocd
+    path: manifests/argo/argocd
     repoURL: git@github.com:thevops/k8s-kind-lab.git
     targetRevision: main
   syncPolicy:

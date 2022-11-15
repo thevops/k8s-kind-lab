@@ -12,3 +12,4 @@ resources:
   # 2. Without auth:
   - dashboard-insecure.yaml # file from above link (v2.7.0) update according to https://medium.com/@tejaswi.goudru/disable-authentication-https-in-kubernetes-dashboard-2fada478ce91
   - ingress.yaml
+  - crb-full-access.yaml

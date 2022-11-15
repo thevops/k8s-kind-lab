@@ -1,5 +1,6 @@
 .ONESHELL:
 SHELL:=/bin/bash
+.SILENT: # don't print commands before execute
 
 # more colors
 # https://misc.flogisoft.com/bash/tip_colors_and_formatting
@@ -52,15 +53,15 @@ _init-cluster:
 _install-argocd:
 	$(call print_info,Install/update ArgoCD Helm repository...)
 	helm repo add argo-cd https://argoproj.github.io/argo-helm || helm repo update argo-cd
-	helm dep update charts/argo/argocd/
+	helm dep update manifests/argo/argocd/
 	$(call print_info,Install ArgoCD CRDs...)
-	kubectl apply -f charts/argo/argocd-crds/
+	kubectl apply -f manifests/argo/argocd-crds/
 	$(call print_info,Install ArgoCD...)
 	kubectl create namespace argocd
-	helm install argocd charts/argo/argocd/ --namespace argocd --wait --debug
+	helm install argocd manifests/argo/argocd/ --namespace argocd --wait --debug
 	$(call print_info,Clean up local ArgoCD...)
-	rm charts/argo/argocd/Chart.lock
-	rm -r charts/argo/argocd/charts/
+	rm manifests/argo/argocd/Chart.lock
+	rm -r manifests/argo/argocd/charts/
 
 
 # K8s secret encoded with base64, because of Makefile issues
