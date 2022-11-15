@@ -64,6 +64,7 @@ spec:
     #   prune: true
     #   selfHeal: true
 ---
+using Helm - not working
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -84,3 +85,24 @@ spec:
 #     automated:
 #       prune: true
 #       selfHeal: true
+# ---
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: kiali
+#   namespace: argocd
+#   finalizers:
+#   - resources-finalizer.argocd.argoproj.io
+# spec:
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: istio-system
+#   project: default
+#   source:
+#     path: deploy/static/provider/kind/
+#     repoURL: https://github.com/kubernetes/ingress-nginx
+#     targetRevision: main
+#   syncPolicy: {}
+#     # automated:
+#     #   prune: true
+#     #   selfHeal: true
