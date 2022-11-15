@@ -13,7 +13,7 @@ spec:
   source:
     path: deploy/static/provider/kind/
     repoURL: https://github.com/kubernetes/ingress-nginx
-    targetRevision: master
+    targetRevision: main
   syncPolicy: {}
     # automated:
     #   prune: true
