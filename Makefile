@@ -37,7 +37,7 @@ _destroy-cluster: ## Destroy Kind cluster
 	$(call print_info,Clean up...)
 	cd live/kind/infrastructure/
 	[ -f .terraform.tfstate ] && terraform apply -destroy -auto-approve
-	rm -rvf main-config .terraform/ .terraform.lock.hcl terraform.tfstate*
+	rm -rvf main-config .terraform/ .terraform.lock.hcl .terraform.tfstate*
 
 .PHONY: _init-cluster
 _init-cluster:
@@ -58,8 +58,8 @@ _install-argocd:
 	kubectl create namespace argocd
 	helm install argocd manifests/argo/argocd/ --namespace argocd --wait --debug
 	$(call print_info,Clean up local ArgoCD...)
-	rm manifests/argo/argocd/Chart.lock
-	rm -r manifests/argo/argocd/charts/
+	rm -f manifests/argo/argocd/Chart.lock
+	rm -rf manifests/argo/argocd/charts/
 
 
 # K8s secret encoded with base64, because of Makefile issues

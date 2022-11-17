@@ -1,0 +1,3 @@
+kiali-server:
+  deployment:
+    ingress_enabled: false
