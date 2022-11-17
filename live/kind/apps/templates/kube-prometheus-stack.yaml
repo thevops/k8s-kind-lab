@@ -32,6 +32,8 @@ spec:
   project: default
   source:
     path: manifests/monitoring/kube-prometheus-stack
+    helm:
+      skipCrds: true # have to do it here; can't disable on app level
     repoURL: https://github.com/thevops/k8s-kind-lab.git
     targetRevision: master
   syncPolicy:
