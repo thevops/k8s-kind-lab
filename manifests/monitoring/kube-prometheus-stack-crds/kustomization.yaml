@@ -11,3 +11,6 @@ resources:
   - https://github.com/prometheus-community/helm-charts/raw/kube-prometheus-stack-41.9.0/charts/kube-prometheus-stack/crds/crd-prometheusrules.yaml
   - https://github.com/prometheus-community/helm-charts/raw/kube-prometheus-stack-41.9.0/charts/kube-prometheus-stack/crds/crd-servicemonitors.yaml
   - https://github.com/prometheus-community/helm-charts/raw/kube-prometheus-stack-41.9.0/charts/kube-prometheus-stack/crds/crd-thanosrulers.yaml
+
+patchesStrategicMerge:
+  - crd-patch.yaml
