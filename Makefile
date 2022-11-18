@@ -36,7 +36,7 @@ endef
 _destroy-cluster: ## Destroy Kind cluster
 	$(call print_info,Clean up...)
 	cd live/kind/infrastructure/
-	[ -f .terraform.tfstate ] && terraform apply -destroy -auto-approve
+	terraform apply -destroy -auto-approve
 	rm -rvf main-config .terraform/ .terraform.lock.hcl .terraform.tfstate*
 
 .PHONY: _init-cluster
