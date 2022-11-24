@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubernetes-dashboard
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: docker-registry
+  project: default
+  source:
+    path: manifests/docker-registry
+    repoURL: https://github.com/thevops/k8s-kind-lab.git
+    targetRevision: master
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true

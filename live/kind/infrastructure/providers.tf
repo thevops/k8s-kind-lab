@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     kind = {
-      source  = "tehcyx/kind"
+      source  = "tehcyx/kind" # docs: https://registry.terraform.io/providers/tehcyx/kind/latest/docs/resources/cluster
       version = "0.0.15"
     }
     kubectl = {

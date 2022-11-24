@@ -37,7 +37,7 @@ _destroy-cluster: ## Destroy Kind cluster
 	$(call print_info,Clean up...)
 	cd live/kind/infrastructure/
 	terraform apply -destroy -auto-approve
-	rm -rvf main-config .terraform/ .terraform.lock.hcl .terraform.tfstate*
+	rm -rvf main-config .terraform/ .terraform.lock.hcl terraform.tfstate terraform.tfstate.backup
 
 .PHONY: _init-cluster
 _init-cluster:
@@ -79,7 +79,7 @@ _install-argocd-root-app:
 ############
 
 .PHONY: init-from-zero
-init-from-zero: _destroy-cluster _init-cluster _install-argocd _install-argocd _install-argocd-root-app # _install-repo-secret ## Init Kind cluster from zero
+init-from-zero: _destroy-cluster _init-cluster _install-argocd _install-argocd-root-app # _install-repo-secret ## Init Kind cluster from zero
 
 .PHONY: argocd-dashboard
 argocd-dashboard: ## Port-forward ArgoCD dashboard
@@ -88,7 +88,6 @@ argocd-dashboard: ## Port-forward ArgoCD dashboard
 	@echo
 	$(call print_info,Port-forward ArgoCD dashboard...)
 	kubectl -n argocd port-forward svc/argocd-server 8080:443
-
 
 .PHONY: kube-dashboard-token
 kube-dashboard-token: # Kubernetes dashboard using token #

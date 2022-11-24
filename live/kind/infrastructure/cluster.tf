@@ -7,6 +7,13 @@ resource "kind_cluster" "main" {
     kind        = "Cluster"
     api_version = "kind.x-k8s.io/v1alpha4"
 
+    # allow insecure docker registry
+    containerd_config_patches = [<<-TOML
+[plugins."io.containerd.grpc.v1.cri".registry.mirrors."registry.127.0.0.1.nip.io"]
+  endpoint = ["http://registry.127.0.0.1.nip.io"]
+TOML
+    ]
+
     node {
       role = "control-plane"
 
