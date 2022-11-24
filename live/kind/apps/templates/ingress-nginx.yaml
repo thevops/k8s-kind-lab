@@ -1,0 +1,20 @@
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: ingress-nginx
+#   namespace: argocd
+#   finalizers:
+#   - resources-finalizer.argocd.argoproj.io
+# spec:
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: ingress-nginx
+#   project: default
+#   source:
+#     path: deploy/static/provider/kind/
+#     repoURL: https://github.com/kubernetes/ingress-nginx
+#     targetRevision: demo-1
+#   # syncPolicy:
+#   #   automated:
+#   #     prune: true
+#   #     selfHeal: true
