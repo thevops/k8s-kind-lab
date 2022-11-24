@@ -1,20 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ingress-nginx
+  name: example-echo-app
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: ingress-nginx
+    namespace: example-echo-app
   project: default
   source:
-    path: deploy/static/provider/kind/
-    repoURL: https://github.com/kubernetes/ingress-nginx
-    targetRevision: main
-  syncPolicy: {}
+    path: manifests/example-echo-app
+    helm:
+      values: |
+        text: Hello Netgurals
+    repoURL: https://github.com/thevops/k8s-kind-lab.git
+    targetRevision: demo-1
+  syncPolicy:
     # automated:
     #   prune: true
     #   selfHeal: true

@@ -12,7 +12,7 @@ spec:
   source:
     path: manifests/argo/argocd-crds
     repoURL: https://github.com/thevops/k8s-kind-lab.git
-    targetRevision: master
+    targetRevision: demo-1
   syncPolicy:
     automated:
       prune: true
@@ -33,7 +33,7 @@ spec:
   source:
     path: manifests/argo/argocd
     repoURL: https://github.com/thevops/k8s-kind-lab.git
-    targetRevision: master
+    targetRevision: demo-1
   syncPolicy:
     automated:
       prune: true
