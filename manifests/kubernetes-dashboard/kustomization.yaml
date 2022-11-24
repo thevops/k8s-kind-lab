@@ -1,15 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-# There are 2 ways of log in to Kubernetes Dashboard: secure and insecure
-
 resources:
-  # 1. Using token:
-  # - https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml
-  # - user.yaml
-  # get token and login using "make kube-dashboard-token"
-
-  # 2. Without auth:
   - dashboard-insecure.yaml # file from above link (v2.7.0) update according to https://medium.com/@tejaswi.goudru/disable-authentication-https-in-kubernetes-dashboard-2fada478ce91
   - ingress.yaml
   - crb-full-access.yaml
